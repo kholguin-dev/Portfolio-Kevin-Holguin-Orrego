@@ -1,0 +1,709 @@
+/* =========================================================
+   VARIABLES GLOBALES (:root) — PALETA B: CARBONO & LIMA ÁCIDA
+   ========================================================= */
+:root {
+  --bg-carbon: #0E0E10;
+  --surface-graphite: #18181C;
+  --surface-hover: #202026;
+  --text-main: #F4F4F6;
+  --text-muted: #9E9EA9;
+  --accent-lime: #BEF264;
+  --accent-indigo: #818CF8;
+  --border-hairline: rgba(244, 244, 246, 0.14);
+  --border-lime: rgba(190, 242, 100, 0.45);
+
+  --font-sans: 'Syne', sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+
+  h1, h2, h3, .titulo-semibold {
+  font-family: var(--font-sans);
+  font-weight: 600; /* Fuerza la versión SemiBold */
+}
+
+  --ease-editorial: cubic-bezier(0.76, 0, 0.24, 1);
+  --transition-fast: 0.28s ease;
+}
+
+/* =========================================================
+   RESET Y ESTILOS BASE
+   ========================================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-carbon);
+  color: var(--text-main);
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-carbon);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.curtain-active {
+  overflow: hidden;
+}
+
+::selection {
+  background-color: var(--accent-lime);
+  color: var(--bg-carbon);
+}
+
+.text-lime {
+  color: var(--accent-lime) !important;
+}
+
+.text-muted-editorial {
+  color: var(--text-muted);
+}
+
+.font-serif-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.editorial-divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--border-hairline);
+}
+
+/* =========================================================
+   CORTINA EDITORIAL DE ENTRADA (KHO.)
+   ========================================================= */
+.intro-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: var(--accent-lime);
+  color: var(--bg-carbon);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.9s var(--ease-editorial);
+  will-change: transform;
+}
+
+.intro-curtain.is-hidden {
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+.curtain-inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.curtain-wordmark {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: clamp(4.2rem, 13vw, 10rem);
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  color: var(--bg-carbon);
+}
+
+.curtain-serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 700;
+}
+
+.curtain-caption {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+/* =========================================================
+   NAVEGACIÓN FIJA MINIMALISTA
+   ========================================================= */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  background-color: rgba(14, 14, 16, 0.82);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.brand-logo {
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  color: var(--text-main) !important;
+  text-transform: uppercase;
+}
+
+.accent-dot {
+  color: var(--accent-lime);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.35rem;
+}
+
+.site-header .nav-link {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color var(--transition-fast);
+}
+
+.site-header .nav-link:hover,
+.site-header .nav-link:focus {
+  color: var(--accent-lime);
+}
+
+.custom-toggler {
+  border: 1px solid var(--border-hairline);
+  border-radius: 999px;
+  color: var(--text-main);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  padding: 0.45rem 1rem;
+}
+
+.btn-pill-lime {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background-color: var(--accent-lime);
+  color: var(--bg-carbon);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.65rem 1.35rem;
+  border-radius: 999px;
+  border: 1px solid var(--accent-lime);
+  transition: transform var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.btn-pill-lime:hover {
+  background-color: transparent;
+  color: var(--accent-lime);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   ZONA 1: HERO EDITORIAL DE PANTALLA COMPLETA
+   ========================================================= */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  padding-top: 5.5rem;
+  border-bottom: 1px solid var(--border-hairline);
+  overflow: hidden;
+}
+
+/* Capa de fondo abstracto (usa assets/img/hero-bg.jpg + respaldo orgánico CSS) */
+.hero-bg-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: var(--bg-carbon);
+  background-image:
+    radial-gradient(circle at 18% 25%, rgba(190, 242, 100, 0.14), transparent 42%),
+    radial-gradient(circle at 84% 72%, rgba(190, 242, 100, 0.12), transparent 45%),
+    url('../assets/img/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.9;
+  transform: scale(1.03);
+}
+
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(14, 14, 16, 0.55) 0%,
+    rgba(14, 14, 16, 0.35) 50%,
+    rgba(14, 14, 16, 0.92) 100%
+  );
+}
+
+.eyebrow-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.hero-display-title {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: clamp(3rem, 8.8vw, 8.2rem);
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+  color: var(--text-main);
+  margin: 1rem 0 0;
+}
+
+.hero-display-title .font-serif-italic {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.hero-role-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.55;
+  text-transform: uppercase;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.05rem, 1.55vw, 1.32rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--text-main);
+  max-width: 62ch;
+}
+
+.scroll-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color var(--transition-fast);
+}
+
+.scroll-cue:hover {
+  color: var(--accent-lime);
+}
+
+.arrow-bounce {
+  display: inline-block;
+  color: var(--accent-lime);
+}
+
+/* =========================================================
+   SECCIONES GENERALES
+   ========================================================= */
+.section-block {
+  padding: clamp(4.5rem, 9vw, 8rem) 0;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.section-surface {
+  background-color: var(--surface-graphite);
+}
+
+.section-index {
+  font-size: 10rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent-lime);
+}
+
+.section-index .font-serif-italic {
+  text-transform: none;
+  letter-spacing: 0.01em;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.section-title {
+  font-weight: 700;
+  font-size: clamp(2rem, 4.4vw, 3.65rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.section-title-sm {
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.section-helper {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+/* =========================================================
+   ZONA 2: LISTA EDITORIAL DE PROYECTOS
+   ========================================================= */
+.projects-editorial-list {
+  border-top: 1px solid var(--border-hairline);
+}
+
+.project-row-item {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--border-hairline);
+  color: var(--text-main);
+  text-align: left;
+  padding: 2.25rem 1rem;
+  display: block;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), padding-left var(--transition-fast);
+}
+
+.project-row-item:hover,
+.project-row-item:focus-visible {
+  background-color: var(--surface-graphite);
+  padding-left: 1.75rem;
+  outline: none;
+}
+
+.project-row-num {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.project-row-item:hover .project-row-num {
+  color: var(--accent-lime);
+}
+
+.project-row-title {
+  font-weight: 700;
+  font-size: clamp(1.45rem, 2.8vw, 2.35rem);
+  letter-spacing: -0.025em;
+  margin-bottom: 0.35rem;
+}
+
+.project-row-summary {
+  font-size: 0.96rem;
+  color: var(--text-muted);
+  max-width: 58ch;
+  margin-bottom: 0;
+}
+
+.project-row-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-main);
+  border: 1px solid var(--border-hairline);
+  border-radius: 999px;
+  padding: 0.55rem 1.15rem;
+  transition: all var(--transition-fast);
+}
+
+.project-row-item:hover .project-row-cta {
+  background-color: var(--accent-lime);
+  border-color: var(--accent-lime);
+  color: var(--bg-carbon);
+}
+
+/* =========================================================
+   ZONA 3: SOBRE MÍ
+   ========================================================= */
+.pillars-stack {
+  border-top: 1px solid var(--border-hairline);
+}
+
+.pillar-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--border-hairline);
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.pillar-num {
+  color: var(--accent-lime);
+  font-size: 1.05rem;
+  min-width: 1.5rem;
+}
+
+.lead-editorial {
+  font-size: clamp(1.35rem, 2.45vw, 2.1rem);
+  font-weight: 500;
+  line-height: 1.38;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+  padding: 0px  50px 0px 200px;
+}
+
+.body-editorial {
+  font-size: clamp(1.05rem, 1.45vw, 1.25rem);
+  line-height: 1.7;
+  color: var(--text-muted);
+  padding: 0px  50px 0px 200px;
+}
+
+/* =========================================================
+   ZONA 4: TRAYECTORIA (01 EXPERIENCIA / 02 EDUCACIÓN) + SKILLS
+   ========================================================= */
+.cv-column-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.cv-number {
+  font-size: 1.25rem;
+}
+
+.cv-column-title {
+  font-size: clamp(1.75rem, 2.8vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.cv-entry {
+  padding: 1.65rem 0;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.cv-date {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-lime);
+}
+
+.cv-role {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.2rem;
+}
+
+.cv-org {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 0.65rem;
+}
+
+.cv-desc {
+  font-size: 0.93rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.skills-band {
+  border-top: 1px solid var(--border-hairline);
+}
+
+.skill-chip {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-hairline);
+  background-color: var(--surface-graphite);
+  color: var(--text-main);
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.skill-chip:hover {
+  border-color: var(--accent-lime);
+  color: var(--accent-lime);
+}
+
+.skill-chip-soft {
+  background-color: transparent;
+  border-style: dashed;
+  color: var(--text-muted);
+}
+
+/* =========================================================
+   ZONA 5: CONTACTO Y 4 BOTONES PRINCIPALES
+   ========================================================= */
+.cta-display-title {
+  font-weight: 800;
+  font-size: clamp(2.4rem, 5.8vw, 5.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.action-card-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 128px;
+  padding: 1.35rem 1.4rem;
+  background-color: var(--bg-carbon);
+  border: 1px solid var(--border-hairline);
+  text-decoration: none;
+  color: var(--text-main);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.action-card-btn:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-lime);
+  color: var(--text-main);
+}
+
+.action-card-lime {
+  background-color: var(--accent-lime);
+  border-color: var(--accent-lime);
+  color: var(--bg-carbon);
+}
+
+.action-card-lime:hover {
+  background-color: #d4fa8c;
+  color: var(--bg-carbon);
+}
+
+.action-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.action-handle {
+  font-size: 0.98rem;
+  font-weight: 700;
+  word-break: break-word;
+}
+
+.btn-copy-subtle {
+  background: transparent;
+  border: 1px solid var(--border-hairline);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-copy-subtle:hover {
+  border-color: var(--accent-lime);
+  color: var(--accent-lime);
+}
+
+.copy-feedback {
+  font-size: 0.85rem;
+  color: var(--accent-lime);
+  font-weight: 600;
+}
+
+/* =========================================================
+   FOOTER Y MODAL TÉCNICO
+   ========================================================= */
+.site-footer {
+  background-color: var(--bg-carbon);
+}
+
+.footer-text {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.editorial-modal {
+  background-color: var(--surface-graphite);
+  color: var(--text-main);
+  border: 1px solid var(--border-hairline);
+  border-radius: 0;
+}
+
+.modal-subtitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.modal-text {
+  font-size: 0.94rem;
+  line-height: 1.65;
+  color: var(--text-main);
+}
+
+.modal-info-box {
+  padding: 1.15rem;
+  background-color: var(--bg-carbon);
+  border: 1px solid var(--border-hairline);
+}
+
+.btn-outline-editorial {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid var(--border-hairline);
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.65rem 1.25rem;
+  border-radius: 999px;
+  transition: all var(--transition-fast);
+}
+
+.btn-outline-editorial:hover {
+  border-color: var(--accent-lime);
+  color: var(--accent-lime);
+}
+
+/* =========================================================
+   ANIMACIÓN SUAVE AL HACER SCROLL (IntersectionObserver)
+   ========================================================= */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-curtain,
+  .reveal-on-scroll {
+    transition: none;
+  }
+}
